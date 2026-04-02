@@ -1,8 +1,11 @@
 import React from 'react';
+import { useRouter } from 'expo-router';
 import { StyleSheet, Text, View, Image, TouchableOpacity, StatusBar } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 export default function WelcomeScreen() {
+  const router = useRouter();
+
   return (
     <LinearGradient
       colors={['#1A365D', '#2D6A4F']} 
@@ -37,11 +40,15 @@ export default function WelcomeScreen() {
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.loginButton}>
-          <Text style={styles.loginButtonText}>Já tenho uma conta. Login</Text>
+          <Text style={styles.loginButtonText} onPress ={() => router.push('/login')}>
+            Já tenho uma conta. Login
+          </Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.cadastroButton}>
-          <Text style={styles.cadastroButtonText}>Cadastrar-se</Text>
+          <Text style={styles.cadastroButtonText} onPress ={() => router.push('/login')}>
+            Cadastrar-se
+          </Text>
         </TouchableOpacity>
    
       </View>
