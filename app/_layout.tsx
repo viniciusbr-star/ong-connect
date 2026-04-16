@@ -4,9 +4,11 @@ export default function Layout() {
   return (
     <Stack
       screenOptions={{
-        headerShown: false, // Isso remove a barra branca de cima de TODAS as telas
+        headerShown: false, 
       }}
-    />
+    >
+      <Stack.Screen name="index" /> 
+      <Stack.Screen name="dashboard" />
+    </Stack>
   );
 }
-
