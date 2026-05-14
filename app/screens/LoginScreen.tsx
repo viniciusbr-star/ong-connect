@@ -6,7 +6,6 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
-  SafeAreaView,
   Alert,
   KeyboardAvoidingView,
   Platform,
@@ -36,7 +35,7 @@ export default function LoginScreen() {
     if (!nome.trim() || !email.trim() || !senha.trim()) {
       return Alert.alert(
         "Campos Vazios",
-        "Por favor, preencha todos os campos para prosseguir.",
+        "Por favor, preencha todos os campos."
       );
     }
 
@@ -47,6 +46,7 @@ export default function LoginScreen() {
       params: { userName: nome, voluntarioId: idAleatorio },
     });
   };
+
 
   return (
     <LinearGradient colors={["#1a2a3a", "#0a0f14"]} style={styles.container}>
@@ -102,7 +102,7 @@ export default function LoginScreen() {
               />
 
               <Text style={styles.helperText}>
-                Logando como: <span style={styles.span}>{email}</span>
+                Logando como: <Text style={styles.span}>{email}</Text>
               </Text>
             </View>
 
