@@ -8,7 +8,7 @@ import { useLocalSearchParams } from "expo-router";
 const Tab = createBottomTabNavigator();
 
 export default function Tabs() {
-  const { userName, voluntarioId } = useLocalSearchParams();
+  const params = useLocalSearchParams(); // Captura userName e voluntarioId
 
   return (
     <Tab.Navigator
@@ -17,23 +17,26 @@ export default function Tabs() {
         tabBarStyle: {
           backgroundColor: "#0F172A",
           borderTopWidth: 0,
+          height: 60,
         },
         tabBarActiveTintColor: "#16a34a",
+        tabBarInactiveTintColor: "#94a3b8",
       }}
     >
       <Tab.Screen
         name="Dashboard"
-        children={() => <DashBoardScreen />}
         options={{
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="home" color={color} size={size} />
           ),
         }}
-      />
+      >
+        {() => <DashBoardScreen />}
+      </Tab.Screen>
 
       <Tab.Screen
         name="Explorar"
-        children={() => <ExplorarScreen />}
+        component={ExplorarScreen}
         options={{
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="search" color={color} size={size} />
@@ -43,23 +46,20 @@ export default function Tabs() {
 
       <Tab.Screen
         name="Perfil"
-        children={() => (
-          <PerfilScreen
-            userName={String(userName)}
-            voluntarioId={String(voluntarioId)}
-          />
-        )}
         options={{
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="person" color={color} size={size} />
           ),
-          
-          tabBarStyle: {
-            backgroundColor: "#0F172A",
-            borderTopWidth: 0,
-          },
         }}
-      />
+      >
+        {/* PARTE 4: Garantindo que o userName chegue ao Perfil */}
+        {() => (
+          <PerfilScreen
+            userName={params.userName}
+            voluntarioId={params.voluntarioId}
+          />
+        )}
+      </Tab.Screen>
     </Tab.Navigator>
   );
 }

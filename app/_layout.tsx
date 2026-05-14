@@ -9,6 +9,9 @@ export default function Layout() {
     >
       <Stack.Screen name="index" /> 
       <Stack.Screen name="dashboard" />
+      <Stack.Screen name="tabs" />
+      <Stack.Screen name="explorar" />
+      <Stack.Screen name="perfil" />
     </Stack>
   );
 }

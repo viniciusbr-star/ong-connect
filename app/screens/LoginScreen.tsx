@@ -35,18 +35,17 @@ export default function LoginScreen() {
     if (!nome.trim() || !email.trim() || !senha.trim()) {
       return Alert.alert(
         "Campos Vazios",
-        "Por favor, preencha todos os campos."
+        "Por favor, preencha todos os campos.",
       );
     }
 
     const idAleatorio = Math.random().toString(36).substring(7).toUpperCase();
 
     router.push({
-      pathname: "/dashboard",
+      pathname: "/tabs",
       params: { userName: nome, voluntarioId: idAleatorio },
     });
   };
-
 
   return (
     <LinearGradient colors={["#1a2a3a", "#0a0f14"]} style={styles.container}>
